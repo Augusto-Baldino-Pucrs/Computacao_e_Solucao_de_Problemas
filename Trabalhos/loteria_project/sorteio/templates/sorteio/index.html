@@ -1,0 +1,27 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Sorteio Loteria</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Styles/styles.css' %}">
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <label for="tipo_loteria">Escolha o tipo de loteria:</label>
+        <select id="tipo_loteria" name="tipo_loteria">
+            <option value="megasena">Megasena</option>
+            <option value="lotofacil">Lotofácil</option>
+            <option value="quina">Quina</option>
+        </select>
+
+        <label for="numeros">Digite os números desejados (separados por vírgula):</label>
+        <input type="text" id="numeros" name="numeros" required>
+
+        <label for="qtd_sorteios">Quantos sorteios queres analisar?</label>
+        <input type="number" id="qtd_sorteios" name="qtd_sorteios" min="1" required>
+
+        <button type="submit">Fazer Aposta</button>
+    </form>
+</body>
+</html>

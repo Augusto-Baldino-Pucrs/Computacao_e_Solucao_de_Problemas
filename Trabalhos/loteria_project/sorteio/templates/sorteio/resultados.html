@@ -1,0 +1,47 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Resultados Loteria</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'Styles/resultados.css' %}">
+</head>
+<body>
+    <div class="resultados">
+        <h1>Resultados</h1>
+        
+        <section>
+            <h2>Quantidade de Acertos por Sorteio</h2>
+            <p>{{ qtd_acertos|join:", " }}</p>
+        </section>
+
+        <section>
+            <h2>Sorteios Premiados</h2>
+            {% if sorteios_premiados %}
+                <ul>
+                    {% for sorteio in sorteios_premiados %}
+                        <li>{{ sorteio }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Nenhum sorteio premiado.</p>
+            {% endif %}
+        </section>
+
+        <section>
+            <h2>Gráficos</h2>
+            <div class="graficos">
+                <h3>Gráfico de Acertos por Sorteio</h3>
+                <img src="data:image/png;base64,{{ graph1 }}" alt="Gráfico de Acertos">
+
+                <h3>Histograma das Dezenas</h3>
+                <img src="data:image/png;base64,{{ graph2 }}" alt="Histograma de Dezenas">
+            </div>
+        </section>
+
+        <section>
+            <h2>Tempo de Execução</h2>
+            <p><strong>{{ execution_time }}</strong></p>
+        </section>
+    </div>
+</body>
+</html>
